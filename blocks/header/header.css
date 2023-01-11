@@ -12,3 +12,10 @@
         margin: 28px auto 42px;
     }
  }
+
+ @media screen and (max-width: 900px) {
+    .header {
+      max-width: 670px;
+    }
+  }
+  
