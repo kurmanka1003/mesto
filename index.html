@@ -14,14 +14,80 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Аватар">
-            <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button"></button>
-                <h2 class="profile__job">Исследователь океана</h2>
+            <div class="profile__box">
+                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Аватар">
+                <div class="profile__info">
+                    <div class="profile__details">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <h2 class="profile__job">Исследователь океана</h2>
+                </div>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" type="button"></button>
+        </section>
+        <section class="cards">
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-1.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">Tre Cime di Lavaredo</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-2.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">Reine</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-3.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">San Giovanni</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-4.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">Toblach</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-5.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">Newport</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
+            <div class="cards__item">
+                <img class="cards__image" src="./images/cards-image-6.jpg" alt="">
+                <div class="cards__info">
+                    <h3 class="cards__name">Utah</h3>
+                    <button class="cards__button" type="button"></button>
+                </div>
+            </div>
         </section>
     </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <form class="form" name="info">
+                <h3 class="form__title">Редактировать профиль</h3>
+                <fieldset class="form__fieldset">
+                    <input class="form__input" type="text" placeholder="Жак-Ив Кусто" name="name">
+                    <input class="form__input" type="text" placeholder="Исследователь океана" name="job">
+                    <button class="form__save" type="submit">Сохранить</button>
+                </fieldset>
+                <button type="reset" class="popup__close" aria-label="Закрыть окно"></button>
+            </form>
+        </div>
+    </div>
+    <script src="./scripts/script.js"></script>
 </body>
+
 </html>
