@@ -1,21 +1,21 @@
-const editButtonProfile = document.querySelector('.profile__edit-button');
+const popupProfileOpenButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-edit');
-const closeButtonProfile = document.querySelector('.popup__close');
+const popupProfileCloseButton = document.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const formElement = document.querySelector('[name="info"]');
+const formProfile = document.querySelector('[name="info"]');
 const nameInput = popupProfile.querySelector('[name="name"]');
 const jobInput = popupProfile.querySelector('[name="job"]');
 
-const addButton = document.querySelector('.profile__add-button');
+const popupProfileAddButton = document.querySelector('.profile__add-button');
 const popupSite = document.querySelector('.popup-add');
-const closeButtonSite = popupSite.querySelector('.popup__close');
-const siteForm = document.querySelector('[name="photo"]');
+const popupSiteCloseButton = popupSite.querySelector('.popup__close');
+const formSite = document.querySelector('[name="photo"]');
 const siteInput = popupSite.querySelector('[name="name"]');
 const linkInput = popupSite.querySelector('[name="link"]');
 
 const popupPhoto = document.querySelector('.popup-site');
-const closeButtonPhoto = popupPhoto.querySelector('.popup__close');
+const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close');
 const popupPhotoPic = popupPhoto.querySelector('.site__photo');
 const popupCaption = popupPhoto.querySelector('.site__caption');
 
@@ -33,13 +33,13 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
-editButtonProfile.addEventListener('click', (evt) => {
+popupProfileOpenButton.addEventListener('click', (evt) => {
     openPopup(popupProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 })
 
-closeButtonProfile.addEventListener('click', (evt) => {
+popupProfileCloseButton.addEventListener('click', (evt) => {
     closePopup(popupProfile);
 })
 
@@ -95,28 +95,24 @@ function addCard(evt) {
     cardsContainer.prepend(newCardAdd);
 
     closePopup(popupSite);
-    siteForm.reset();
+    formSite.reset();
 }
 
-siteForm.addEventListener('submit', addCard);
+formSite.addEventListener('submit', addCard);
 
-function displayCards() {
-    initialCards.forEach(item => {
+initialCards.forEach(item => {
         const cardHtml = createCard(item);
         cardsContainer.append(cardHtml);
     });
-}
 
-displayCards();
-
-addButton.addEventListener('click', (evt) => {
+popupProfileAddButton.addEventListener('click', (evt) => {
     openPopup(popupSite);
 })
 
-closeButtonSite.addEventListener('click', (evt) => {
+popupSiteCloseButton.addEventListener('click', (evt) => {
     closePopup(popupSite);
 })
 
-closeButtonPhoto.addEventListener('click', (evt) => {
+popupPhotoCloseButton.addEventListener('click', (evt) => {
     closePopup(popupPhoto);
 })
