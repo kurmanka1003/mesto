@@ -3,6 +3,7 @@ const popupProfile = document.querySelector('.popup-edit');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const formProfile = document.querySelector('[name="info"]');
+const formAddCard = document.querySelector('.form_add-card');
 const nameInput = popupProfile.querySelector('[name="name"]');
 const jobInput = popupProfile.querySelector('[name="job"]');
 const popupProfileSendButton = popupProfile.querySelector('[name="send"]');
@@ -24,6 +25,13 @@ const cardsTemplate = document
     .querySelector('.template')
     .content
     .querySelector('.cards__element');
+
+const config = {
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__submit',
+    inputErrorClass: 'form__input_type_error',
+  }
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -67,10 +75,10 @@ function createCard({ name, link }) {
     });
 
     cardImage.addEventListener('click', function (evt) {
-        openPopup(popupPhoto);
         popupPhotoPic.src = link;
         popupPhotoPic.alt = name;
         popupCaption.textContent = name;
+        openPopup(popupPhoto);
     });
 
     return card;
@@ -99,12 +107,14 @@ function addListenerEsc(evt) {
     };
 };
 
-function clearErrorForm() {
-    for (let i = 0; i < formInputsError.length; i++) {
-        formInputsError[i].textContent = '';
-        formInputsError[i].classList.remove('form__input-error_active');
-        formInputs[i].classList.remove('form__input_type_error');
+function clearErrorForm(form, config) {
+    const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+
+    for (const input of inputList) {
+        hideInputError(form, input, config);
     }
+
+    form.reset();
 }
 
 function closePopupOutside(event, popup) {
@@ -115,7 +125,6 @@ function closePopupOutside(event, popup) {
 
 popupProfileOpenButton.addEventListener('click', (evt) => {
     openPopup(popupProfile);
-    clearErrorForm()
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     popupProfileSendButton.setAttribute("disabled", true)
@@ -123,7 +132,7 @@ popupProfileOpenButton.addEventListener('click', (evt) => {
 
 popupProfileAddButton.addEventListener('click', (evt) => {
     openPopup(popupSite);
-    clearErrorForm();
+    clearErrorForm(formAddCard, config);
     popupAddCardSendButton.setAttribute("disabled", true);
 })
 

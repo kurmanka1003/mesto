@@ -51,9 +51,4 @@ const showInputError = (formElement, inputElement, errorMessage, object) => {
     }
   };
   
-  enableValidation({
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inputErrorClass: 'form__input_type_error',
-  });
+  enableValidation(config);
