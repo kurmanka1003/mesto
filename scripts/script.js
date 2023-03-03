@@ -25,14 +25,14 @@ const closeButton = document.querySelectorAll('.popup__close');
 
 const cardsContainer = document.querySelector('.cards__list');
 
-const settingsObject = {
+const validationConfig = {
     formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
     inputErrorClass: 'form__input_type_error',
 };
-const formProfileValidator = new FormValidator(settingsObject, formProfile);
-const formAddCardValidator = new FormValidator(settingsObject, formAddCard);
+const formProfileValidator = new FormValidator(validationConfig, formProfile);
+const formAddCardValidator = new FormValidator(validationConfig, formAddCard);
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -84,23 +84,13 @@ formSite.addEventListener('submit', addCard);
 
 function addListenerEsc(evt) {
     const key = evt.key;
-    if (key == "Escape") {
+    if (key === "Escape") {
         closePopup(document.querySelector('.popup_opened'));
     };
 };
 
-function clearErrorForm(form, settingsObject) {
-    const inputList = Array.from(form.querySelectorAll(settingsObject.inputSelector));
-
-    for (const input of inputList) {
-        hideInputError(form, input, settingsObject);
-    }
-
-    form.reset();
-}
-
 function closePopupOutside(event, popup) {
-    if (event == popup) {
+    if (event === popup) {
         closePopup(popup);
     };
 }
@@ -109,13 +99,13 @@ popupProfileOpenButton.addEventListener('click', (evt) => {
     openPopup(popupProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    popupProfileSendButton.setAttribute("disabled", true)
+    formProfileValidator.resetInput();
 })
 
 popupProfileAddButton.addEventListener('click', (evt) => {
+    formAddCardValidator.resetInput();
     openPopup(popupSite);
-    clearErrorForm(formAddCard, settingsObject);
-    popupAddCardSendButton.setAttribute("disabled", true);
+    removeValidationErrors(formAddCard, validationConfig);
 })
 
 initialCards.forEach(item => {
