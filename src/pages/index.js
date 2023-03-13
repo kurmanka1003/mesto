@@ -36,29 +36,26 @@ const userInfo = new UserInfo({
 
 const popupWithEditForm = new PopupWithForm(
   ".popup-edit",
-  setFormValues
+  handleEditProfileFormSubmit
 );
 popupWithEditForm.setEventListeners();
 
-const popupWithAddForm = new PopupWithForm(
-  ".popup-add",
-  (item) => {
-    cardSection.addItem(createCard(item));
-    popupWithAddForm.closePopup();
-  }
-)
+const popupWithAddForm = new PopupWithForm(".popup-add", (item) => {
+  cardSection.addItem(createCard(item));
+  popupWithAddForm.closePopup();
+});
 popupWithAddForm.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup_image");
 popupWithImage.setEventListeners();
 
 function createCard(cardItem) {
-  return new Card(cardItem, '.template', () =>
+  return new Card(cardItem, ".template", () =>
     popupWithImage.openPopup(cardItem)
   ).generateCard();
 }
 
-function setFormValues(value) {
+function handleEditProfileFormSubmit(value) {
   userInfo.setUserInfo(value.name, value.job);
   popupWithEditForm.closePopup();
 }
@@ -70,12 +67,12 @@ function openEditProfile() {
   popupWithEditForm.openPopup(data);
 }
 
-function popupAddCardProfile() {
+function openAddCardPopup() {
   formAddCardValidator.removeValidationErrors();
   popupWithAddForm.openPopup();
 }
 
-popupProfileAddButton.addEventListener("click", () => popupAddCardProfile());
+popupProfileAddButton.addEventListener("click", () => openAddCardPopup());
 popupProfileOpenButton.addEventListener("click", () => openEditProfile());
 
 cardSection.renderItems(initialCards.reverse());

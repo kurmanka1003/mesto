@@ -2,14 +2,18 @@ export default class FormValidator {
   constructor(validationConfig, form) {
     this._validationConfig = validationConfig;
     this._form = form;
-    this._buttonElement = this._form.querySelector(validationConfig.submitButtonSelector);
-    this._inputList = Array.from(this._form.querySelectorAll(validationConfig.inputSelector));
+    this._buttonElement = this._form.querySelector(
+      validationConfig.submitButtonSelector
+    );
+    this._inputList = Array.from(
+      this._form.querySelectorAll(validationConfig.inputSelector)
+    );
   }
 
   enableValidation() {
     this._setEventListeners();
     this._toggleButtonState();
-  };
+  }
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
@@ -22,7 +26,7 @@ export default class FormValidator {
   _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
+      inputElement.addEventListener("input", () => {
         this._isValid(inputElement);
         this._toggleButtonState();
       });
@@ -40,7 +44,7 @@ export default class FormValidator {
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-    })
+    });
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -52,7 +56,7 @@ export default class FormValidator {
   _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._validationConfig.inputErrorClass);
-    errorElement.textContent = '';
+    errorElement.textContent = "";
   }
 
   removeValidationErrors() {
@@ -63,18 +67,17 @@ export default class FormValidator {
   }
 
   disableSubmitButton = () => {
-    this._buttonElement.setAttribute('disabled', 'disabled');
+    this._buttonElement.setAttribute("disabled", "disabled");
   };
 
   enableSubmitButton = () => {
-    this._buttonElement.removeAttribute('disabled');
+    this._buttonElement.removeAttribute("disabled");
   };
 
   resetInput = () => {
     this.disableSubmitButton();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
-    })
+    });
   };
-
 }
