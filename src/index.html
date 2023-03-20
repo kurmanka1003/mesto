@@ -132,25 +132,20 @@
 
     <div class="popup popup_delete">
       <form class="popup__delete-container">
+        <h2 class="form__title">Вы уверены?</h2>
         <button
           class="popup__close"
           type="button"
           aria-label="Закрыть попап"
         ></button>
-        <h2 class="form__title">Вы уверены?</h2>
-        <button
-          class="form__submit popup__save-button_type_confirm"
-          type="submit"
-        >
-          Да
-        </button>
+        <button class="form__submit" type="submit">Да</button>
       </form>
     </div>
 
     <div class="popup popup_avatar">
       <div class="popup__container">
         <form
-          class="form form_avatar popup__container_type_avatar"
+          class="form form_avatar"
           name="avatar-form"
           novalidate
         >
@@ -159,7 +154,6 @@
             type="button"
             aria-label="Закрыть попап"
           ></button>
-
           <h2 class="form__title">Обновить аватар</h2>
           <input
             class="form__input"
