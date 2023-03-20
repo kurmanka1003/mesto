@@ -131,24 +131,22 @@
     </div>
 
     <div class="popup popup_delete">
-      <form class="popup__delete-container">
-        <h2 class="form__title">Вы уверены?</h2>
-        <button
-          class="popup__close"
-          type="button"
-          aria-label="Закрыть попап"
-        ></button>
-        <button class="form__submit" type="submit">Да</button>
-      </form>
+      <div class="popup__delete-container">
+        <form class="form">
+          <h2 class="form__title">Вы уверены?</h2>
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="Закрыть попап"
+          ></button>
+          <button class="form__submit" type="submit">Да</button>
+        </form>
+      </div>
     </div>
 
     <div class="popup popup_avatar">
       <div class="popup__container">
-        <form
-          class="form form_avatar"
-          name="avatar-form"
-          novalidate
-        >
+        <form class="form form_avatar" name="avatar-form" novalidate>
           <button
             class="popup__close"
             type="button"
